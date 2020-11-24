@@ -1,0 +1,11 @@
+language: generic
+sudo: required
+services:
+ - Docker
+
+before install:
+ - docker build -t lakshmankrish/react-app -f dockerfile.dev . 
+
+
+script:
+  - docker run -e CI=true lakshmankrish/react-app npm run test
